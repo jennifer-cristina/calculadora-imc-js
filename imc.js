@@ -22,9 +22,8 @@ function classificarImc(imc){
 
     if( imc < 18.5) {
         texto = 'e você está abaixo do peso.';
-
     }else if(imc < 25) {
-        texto = 'e você está com peso ideal. Parabens';
+        texto = 'e você está com peso ideal!';
     }else if(imc < 30) {
         texto = 'e você está levemente acima do peso.';
     }else if(imc < 35) {
@@ -32,18 +31,38 @@ function classificarImc(imc){
     }else if(imc < 40) {
         texto = 'e você está com obesidade grau II';
     }else {
-        texto = 'e você está com obesidade grau III. Cuidado!';
+        texto = 'e você está com obesidade grau III.';
     }
+
     return texto;
+
 }
+
+function definirAviso(imc) {
+    let aviso;
+
+    if( imc < 18.5) {
+        aviso = '<span class="vermelho">Cuidado!</span>'
+    }else if(imc < 25) {
+        aviso = '<span class="verde">Parabéns!</span>'
+    }else if( imc > 40){
+        aviso = '<span class="vermelho">Cuidado!</span>'
+    }
+
+    return aviso;
+}
+
 
     if(camposValidos()){
 
     const imc = calcularImc(altura, peso);
 
     let texto = classificarImc(imc);
+    let aviso = definirAviso(imc);
 
     resultado.textContent = `${nome} seu IMC é ${imc.toFixed(2)} ${texto}`;
+
+    if(aviso) resultado.innerHTML += aviso;
 
     }else{
         resultado.textContent = 'Preencha todos os campos!';       
