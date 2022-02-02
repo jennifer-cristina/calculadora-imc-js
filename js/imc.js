@@ -36,7 +36,8 @@ const classificarImc = (imc) => {
     return texto;
 
 }
- 
+
+// função para aprensentar na div resultado o estado conforme a altura e o peso do usuário
 function definirAviso(imc) {
     let aviso;
 
@@ -60,6 +61,8 @@ function definirAviso(imc) {
     let aviso = definirAviso(imc);
 
     resultado.textContent = `${nome} seu IMC é ${imc.toFixed(2)} ${texto}`;
+
+// Condição para que segundo o estado imc do usuário mostre o alerta
 
     if(aviso) resultado.innerHTML += aviso;
 

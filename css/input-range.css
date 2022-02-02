@@ -36,3 +36,8 @@
     border-radius: 50%;
     transform: translateY(-7.5px);
 }
+
+.range span::after {
+    content: attr(data-unidade);
+    margin-left: 4px;
+}
