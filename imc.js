@@ -2,9 +2,9 @@
 'use strict';
 
 // Validação
-function camposValidos (){
-    return document.getElementById('formulario').reportValidity();
-}
+const camposValidos = () => document.getElementById('formulario').reportValidity();
+
+const calcularImc = (altura, peso) => peso / (altura * altura);
 
 function mostrarResultado() {
     const nome = document.getElementById('nome').value;
@@ -13,11 +13,7 @@ function mostrarResultado() {
     const resultado = document.getElementById('resultado');
 
 
-function calcularImc(altura, peso){
-    return peso / (altura * altura);
-}
-
-function classificarImc(imc){
+const classificarImc = (imc) => {
     let texto;
 
     if( imc < 18.5) {
@@ -37,7 +33,7 @@ function classificarImc(imc){
     return texto;
 
 }
-
+ 
 function definirAviso(imc) {
     let aviso;
 
@@ -71,5 +67,11 @@ function definirAviso(imc) {
 
 document.getElementById('calcular').addEventListener('click', mostrarResultado);
 
+const iniciarRange = (idRange) => {
+    const atualizarValor = () => 
+    document.getElementById(`valor-${idRange}`).textContent = document.getElementById(idRange).value;
+    document.getElementById(idRange).addEventListener('input', atualizarValor);
+} 
 
-
+iniciarRange('altura');
+iniciarRange('peso');
