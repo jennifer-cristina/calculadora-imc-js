@@ -1,6 +1,9 @@
 // Permite analisar e vigiar o seu código.
 'use strict';
 
+//importações
+import { iniciarRange } from "./input-range.js";
+
 // Validação
 const camposValidos = () => document.getElementById('formulario').reportValidity();
 
@@ -66,12 +69,6 @@ function definirAviso(imc) {
 }
 
 document.getElementById('calcular').addEventListener('click', mostrarResultado);
-
-const iniciarRange = (idRange) => {
-    const atualizarValor = () => 
-    document.getElementById(`valor-${idRange}`).textContent = document.getElementById(idRange).value;
-    document.getElementById(idRange).addEventListener('input', atualizarValor);
-} 
 
 iniciarRange('altura');
 iniciarRange('peso');
